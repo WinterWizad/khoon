@@ -1,0 +1,1 @@
+console.log("I inserted JS in django wow!")

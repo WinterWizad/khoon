@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="submit-container ml-20 ">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'newapp:submission' %}">
+    {% csrf_token %} 
+    #cross side request forgery token
+    {{form}}
+    <input type="submit" value="submit">
+</form>
+  </div>
+  {% endblock %}

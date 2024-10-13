@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+    <div class="container mx-auto text-center">
+        <h1 class="text-4xl font-semibold mb-4">Emergency Blood Requests</h1>
+
+    </div>
+</section>
+
+<section class="py-16">
+    <div class="container mx-auto">
+
+
+        <!-- Request Cards -->
+        <div class="flex gap-1 justify-around">
+        {% for application in applications %}
+            <div class="bg-white w-1/4 shadow-md rounded-lg p-6 flex flex-col">
+                <h3 class="text-xl font-semibold mb-4 text-red-600">URGENT</h3>
+                <p class="text-gray-600 mb-4"><i class="fas fa-user mr-2"></i> Patient ID: {{application.id}}</p>
+                <p class="text-blue-600 mb-4"><i class="fas fa-user mr-2"></i>
+
+                    <a href="{% url 'newapp:page' slug=application.name %}">
+                     Patient NAME: {{application.name}}
+                </a></p>
+
+                <p class="text-gray-600 mb-4"><i class="fas fa-user mr-2"></i> Patient AGE: {{application.age}}</p>
+                <p class="text-gray-600 mb-4"><i class="fas fa-user mr-2"></i> Blood-group: {{application.blood}}</p>
+                <p class="text-gray-600 mb-4"><i class="fas fa-user mr-2"></i> Date: {{application.date}}</p>
+                <p class="text-gray-600 mb-4"><i class="fas fa-hospital mr-2"></i> Hospital: {{application.hospital}}
+                </p>
+                <p class="text-gray-600 mb-4">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>Reason:{{application.reason}}
+                </p>
+
+                {% if user == application.author or user.is_superuser or user.is_staff %}
+                <a href="/dlt_patient/{{application.id}}" class="mr-20"><button>DELETE</button></a>
+                {% endif %}
+
+            </div>
+            {% endfor %}
+        </div>
+
+        </div>
+</section>
+
+
+<a href="/submission" class="ml-20 bg-green-400 text-white p-3"><button>SUBMIT REQUEST</button></a>
+{% endblock %}
