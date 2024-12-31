@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+   
+ <div class="container">
+    <p class="text-red-600 ml-3 font-bold"> PLease Login! Or.... Is it possible that you are </p>
+     <p class="text-blue-600 ml-3 mb-4 font-bold"><a href="{% url 'users:register' %}">Not registered? Click here </a> </p>
+   <form class="w-96 ml-20 bg-gray-600 p-3 rounded-xl" method="post" action="/users/login/">
+      {% csrf_token %}
+      {{form}}
+      {% if request.GET.next %}
+      <input type="hidden" name="next" value="{{request.GET.next}}" />
+      {% endif %}
+      <button>SUBMIT</button>
+   </form>
+ </div>
+{% endblock %}

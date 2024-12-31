@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="donors_container">
+{% for donor in donors %}
+<div class="donor_container">
+<img class="photo" src="{{donor.photo.url}}">
+
+    
+    <table>
+<tr>
+    <td>Name:</td><td>{{donor.name}}</td>
+</tr>
+
+<tr>
+    <td>Number:</td><td>{{donor.phone}}</td>
+</tr>
+
+<tr>
+   <td> Age:</td><td>{{donor.age}}</td>
+</tr>
+
+
+<tr>
+    <td>blood:</td><td>{{donor.blood}}</td>
+</tr>
+
+</table>
+</div>
+
+
+{% endfor %}
+</div>
+{% endblock %}

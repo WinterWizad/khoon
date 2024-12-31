@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if donor %}
+{% for don in donor %}
+
+<p class="text-red-600 ml-20 mb-4 font-bold">Hey {{don.username}}! Looks like you are a DONOR, Thats Awesome.</p>
+{% endfor %}
+{% endif %}
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-semibold mb-4">Find Blood Donors Near You</h1>
+            <p class="text-lg mb-8">Search our database of blood donors and save lives!</p>
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="flex justify-center "></div>
+        <form action="{% url 'newapp:home' %}" method="post">
+            {% csrf_token %}
+            
+                <input type="text" placeholder="Enter your location" class=" text-black p-3 w-96 rounded-l-lg focus:outline-none" name="address">
+                <input type="submit" class="bg-green-400 text-white px-6 py-3 rounded-r-lg font-bold  hover:bg-gray-300 focus:outline-none">
+            
+        </form>
+    </div>
+        </div>
+    </section>
+  <div class="container mx-auto">
+      <div class="mt-5 flex justify-around  space-x-5">
+        <!-- Total Donors Card -->
+        <div class="w-full bg-blue-400 rounded-lg p-6 flex flex-col items-center justify-center">
+            <i class="fas fa-users text-4xl text-white mb-4"></i>
+            <h2 class="text-lg font-semibold text-white">Total Donors</h2>
+            <p class="text-2xl font-bold text-white">{{total}}</p>
+        </div>
+
+        <!-- Male Persons Card -->
+        <div class="w-full bg-green-400 rounded-lg p-6 flex flex-col items-center justify-center">
+            <i class="fas fa-male text-4xl text-white mb-4"></i>
+            <h2 class="text-lg font-semibold text-white">REQUIRED</h2>
+            <p class="text-2xl font-bold text-white">{{required_donors}}</p>
+        </div>
+
+        <!-- Female Persons Card -->
+        <div class="w-full bg-pink-400 rounded-lg p-6 flex flex-col items-center justify-center">
+            <i class="fas fa-female text-4xl text-white mb-4"></i>
+            <h2 class="text-lg font-semibold text-white">COMPLETED</h2>
+            <p class="text-2xl font-bold text-white">{{completed}}</p>
+        </div>
+    </div>
+
+    
+  </div>
+
+{% endblock %}

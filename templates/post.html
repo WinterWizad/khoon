@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="post-container">   
+    <img class="photo" src="{{post.photo.url}}" alt="This is patient photo">
+<table>
+    <tr>
+        <td>Name:</td>
+        <td>{{post.name}}</td>
+    </tr>
+    <tr>
+        <td>Age:</td>
+        <td>{{post.age}}</td>
+    </tr>
+    <tr>
+        <td>Blood:</td>
+        <td>{{post.blood}}</td>
+    </tr>
+    <tr>
+        <td>Submission ON:</td>
+        <td>{{post.date}}</td>
+    </tr>
+    <tr>
+        <td>Hospital:</td>
+        <td>{{post.hospital}}</td>
+    </tr>
+    <tr>
+        <td>Reason:</td>
+        <td>{{post.reason}}</td>
+    </tr>
+   
+</table>
+</div>
+
+{% endblock %}
