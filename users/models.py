@@ -4,10 +4,13 @@ from django.db import models
 from autoslug import AutoSlugField
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator
+<<<<<<< HEAD
 from django.utils import timezone
 
 
 
+=======
+>>>>>>> 8c0dd8e8b724120e633de759ea8010c95d815f0e
 
 class Doners(models.Model):
     name=models.CharField(max_length=50)
@@ -32,7 +35,11 @@ class Doners(models.Model):
             ('AB+','AB+')
            )
     blood=models.CharField(max_length=10,choices=choice)
+<<<<<<< HEAD
     lastDonatedDate=models.DateField(null=False,default=timezone.now)
+=======
+    lastDonatedDate=models.DateField(auto_now=True)
+>>>>>>> 8c0dd8e8b724120e633de759ea8010c95d815f0e
     photo=models.ImageField(default="patient.webp", blank=True,null=False)
     slug=AutoSlugField(populate_from='phone',unique=True,null=True,default=None)
     username = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
